@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aurum Hedge EA – Bot MT5 Hedge · DCA · RSI | Kết quả trực tiếp</title>
+<meta name="description" content="Aurum Hedge EA: bot giao dịch tự động MT5, kết hợp RSI, Hedge và DCA chuỗi. Kết quả đọc trực tiếp từ tài khoản thật.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070b1a;--cd:#0e1733;--cd2:#131f47;--ink:#eef1fb;--mu:#8f9bc2;--line:#1d2b58;--gold:#f5c451;--acc:#6d7bff;--up:#2fd6a0;--dn:#ff6b7a;
+--head:'Bricolage Grotesque',system-ui,'Segoe UI',sans-serif;--body:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+*{box-sizing:border-box}
+html{color-scheme:dark;scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:15px/1.6 var(--body);background:radial-gradient(900px 500px at 90% -10%,rgba(245,196,81,.16),transparent 60%),radial-gradient(800px 500px at -5% 5%,rgba(109,123,255,.22),transparent 60%),var(--bg);padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.wrap{max-width:1100px;margin:0 auto;padding:22px 18px 60px}
+.up{color:var(--up)}.dn{color:var(--dn)}.mu{color:var(--mu)}.num{font-variant-numeric:tabular-nums}
+a{color:inherit}
+section{margin-top:22px}
+.card{background:var(--cd);border:1px solid var(--line);border-radius:20px;padding:22px}
+h2{font:700 21px/1.2 var(--head);margin:0 0 4px}
+.sub{margin:0 0 14px;font-size:13px;color:var(--mu)}
+
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:13px}
+.logo{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font:700 24px var(--head);color:#1a1300;background:linear-gradient(135deg,#ffe29a,var(--gold) 60%,#d99a1a);box-shadow:0 8px 28px rgba(245,196,81,.35)}
+.brand h1{font:700 clamp(20px,3vw,26px)/1.1 var(--head);margin:0}
+.brand small{color:var(--mu);font-size:12.5px;letter-spacing:.04em}
+.right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(14,23,51,.85);border-radius:999px;padding:8px 15px;font-size:13px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--mu)}
+.pill.live{border-color:rgba(47,214,160,.45)}.pill.live .dot{background:var(--up);animation:pulse 2s ease-out infinite}
+.pill.off{border-color:rgba(255,107,122,.45)}.pill.off .dot{background:var(--dn)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,214,160,.7)}100%{box-shadow:0 0 0 11px rgba(47,214,160,0)}}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14px;border-radius:999px;padding:10px 20px;color:#1a1300;background:linear-gradient(135deg,#ffe29a,var(--gold));box-shadow:0 8px 24px rgba(245,196,81,.28);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+
+/* intro */
+.intro{margin-top:26px;text-align:center;padding:10px 0 4px}
+.intro .kick{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,196,81,.35);border-radius:999px;padding:5px 14px}
+.intro h2{font-size:clamp(26px,5vw,44px);margin:14px auto 10px;max-width:20ch;letter-spacing:-.02em}
+.intro p{color:var(--mu);max-width:64ch;margin:0 auto 18px;font-size:16px}
+.intro .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* kết quả */
+.res{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.big{border-radius:20px;border:1px solid var(--line);padding:22px 24px;background:linear-gradient(180deg,var(--cd2),var(--cd));position:relative;overflow:hidden}
+.big::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold)}
+.big span.l{display:block;font-size:13px;color:var(--mu);margin-bottom:6px}
+.big b{display:block;font:700 clamp(40px,8vw,72px)/1 var(--head);letter-spacing:-.03em}
+.big small{display:block;margin-top:8px;color:var(--mu);font-size:13px}
+.chips{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
+.chip{flex:1 1 180px;border:1px solid var(--line);border-radius:14px;padding:11px 16px;background:rgba(14,23,51,.7);font-size:13px;color:var(--mu)}
+.chip b{display:block;font:700 19px/1.25 var(--head);color:var(--ink)}
+.chip b i{font-style:normal;font-size:13px;opacity:.75;margin-left:6px;font-family:var(--body);font-weight:500}
+.chart{position:relative;margin-top:6px}
+#chart{display:block;width:100%;height:320px;touch-action:pan-y}
+#tip{position:absolute;pointer-events:none;background:#fff;color:#0a1030;font-size:12px;font-weight:600;padding:6px 10px;border-radius:8px;white-space:nowrap;opacity:0;transform:translate(-50%,-135%);box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{background:var(--cd);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.stat b{display:block;font:700 28px/1.1 var(--head);margin-bottom:3px}
+.stat span{font-size:12.5px;color:var(--mu)}
+
+/* tính năng */
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+.feat{background:var(--cd2);border:1px solid var(--line);border-radius:16px;padding:18px}
+.feat .ic{font-size:24px}
+.feat h3{font:700 16px var(--head);margin:8px 0 4px}
+.feat p{margin:0;font-size:13.5px;color:var(--mu)}
+.steps{counter-reset:s;list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(7,11,26,.4)}
+.steps li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 14px var(--head);color:#1a1300;background:var(--gold)}
+.steps b{display:block}.steps span{font-size:13.5px;color:var(--mu)}
+
+/* danh sách lệnh */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rows{max-height:380px;overflow:auto}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 14px;margin-bottom:8px;background:rgba(7,11,26,.45);border:1px solid var(--line);border-radius:14px}
+.row small{display:block;color:var(--mu);font-size:12px}
+.row .r{text-align:right;font-weight:700;font-size:15px}.row .r small{font-weight:500}
+.badge{display:inline-block;font-size:11px;font-weight:700;border-radius:6px;padding:2px 7px;margin-right:6px}
+.badge.buy{background:rgba(47,214,160,.15);color:var(--up)}.badge.sell{background:rgba(255,107,122,.15);color:var(--dn)}
+.empty{padding:20px 0;color:var(--mu)}
+
+/* thông số + liên hệ */
+dl{margin:10px 0 0;display:grid;grid-template-columns:minmax(120px,190px) 1fr}
+dt,dd{margin:0;padding:12px 0;border-top:1px solid var(--line)}dt{color:var(--mu)}
+.contact{text-align:center;background:linear-gradient(135deg,rgba(245,196,81,.14),rgba(109,123,255,.14));border-color:rgba(245,196,81,.3)}
+.contact p{color:var(--mu);margin:6px 0 16px}
+footer{margin-top:28px;font-size:12.5px;color:var(--mu);max-width:78ch}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+@media(max-width:780px){.res,.cols{grid-template-columns:1fr}}
+@media(max-width:560px){dl{grid-template-columns:1fr}dt{padding-bottom:0}dd{border-top:0;padding-top:2px}}
+@media(prefers-reduced-motion:reduce){.pill.live .dot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header class="top">
+  <div class="brand"><div class="logo">A</div><div><h1 id="botName"></h1><small id="botSub"></small></div></div>
+  <div class="right">
+    <div class="pill" id="status"><span class="dot"></span><span id="statusTxt">Đang kết nối…</span></div>
+    <a class="btn" id="tgTop" target="_blank" rel="noopener">Liên hệ Telegram</a>
+  </div>
+</header>
+
+<div class="intro">
+  <span class="kick">Bot MT5 · Hedging · Tự động 24/5</span>
+  <h2>Cân bằng hai chiều, gồng lãi, chốt theo chuỗi</h2>
+  <p id="botTag"></p>
+  <div class="cta"><a class="btn" id="tgHero" target="_blank" rel="noopener">Nhận tư vấn qua Telegram</a><a class="btn ghost" href="#ketqua">Xem kết quả trực tiếp</a></div>
+</div>
+
+<section id="ketqua" aria-label="Kết quả giao dịch">
+  <div class="res">
+    <div class="big"><span class="l" id="gL">Lãi / lỗ (%)</span><b class="num" id="gPct">–</b><small id="gDays"></small></div>
+    <div class="big"><span class="l">Lãi / lỗ (USD)</span><b class="num" id="gUsd">–</b><small id="gBal"></small></div>
+    <div class="chips num" id="chips"></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Đường cong tăng trưởng</h2>
+  <p class="sub">Mỗi điểm là một lệnh đã đóng. Rê chuột/chạm vào biểu đồ để xem chi tiết.</p>
+  <div class="chart"><svg id="chart" role="img" aria-label="Biểu đồ tăng trưởng tài khoản"></svg><div id="tip"></div></div>
+</section>
+
+<section class="stats num" id="stats" aria-label="Chỉ số hiệu suất"></section>
+
+<section class="card">
+  <h2>Giới thiệu bot</h2>
+  <p class="sub" id="aboutIntro"></p>
+  <div class="feats" id="feats"></div>
+  <ol class="steps" id="steps"></ol>
+</section>
+
+<section class="cols">
+  <div class="card"><h2>Lệnh đang mở</h2><p class="sub" id="openSub">&nbsp;</p><div class="rows" id="open"></div></div>
+  <div class="card"><h2>Lệnh đã đóng gần đây</h2><p class="sub">Dữ liệu từ MT5 tự động cập nhật</p><div class="rows" id="recent"></div></div>
+</section>
+
+<section class="card"><h2>Thông số bot</h2><dl id="about"></dl></section>
+
+<section class="card contact">
+  <h2>Muốn chạy bot trên tài khoản của bạn?</h2>
+  <p>Nhắn trực tiếp để được hướng dẫn cài đặt, cấu hình vốn và thời gian dùng thử.</p>
+  <a class="btn" id="tgBot" target="_blank" rel="noopener"></a>
+</section>
+
+<footer>Dữ liệu đọc trực tiếp từ tài khoản MetaTrader 5 của bot, trang này chỉ hiển thị và không thực hiện thao tác nào. Bot dùng DCA và hedge nên có thể chịu sụt giảm lớn khi thị trường đi một chiều dài. Kết quả quá khứ không đảm bảo kết quả tương lai; giao dịch có rủi ro mất vốn, chỉ dùng số tiền bạn có thể chấp nhận mất.</footer>
+</main>
+
+<script>
+/* ====== CẤU HÌNH ====== */
+const CONFIG = {
+  name: "Aurum Hedge EA",
+  sub: "HEDGE · DCA · RSI",
+  tagline: "Bot tự động trên MT5 mở lệnh theo tín hiệu RSI, giữ lại các lệnh đang lãi để gồng và xử lý lệnh âm bằng DCA theo chuỗi, chốt cả chuỗi khi đạt mục tiêu. Mọi con số bên dưới lấy trực tiếp từ tài khoản thật.",
+  telegram: "trieutrieu79",
+  server: "https://ntfy.sh",     // Máy chủ ntfy
+  topic: "aurum-hedge-x7k29qpl4m81",   // Phải giống hệt InpTopic trong EA
+  startBalance: 0,      // Vốn ban đầu (USD). Điền số để hiện cả % và USD khi API chỉ trả về một loại. 0 = lấy từ API
+  refreshSec: 30,        // Trang tự đọc lại dữ liệu mỗi 30 giây (EA gửi 60 giây/lần)
+  staleSec: 900,         // Quá 15 phút không có dữ liệu mới thì hiện "offline"
+  features: [
+    ["📊","Vào lệnh bằng RSI","Lệnh đầu tiên mở theo RSI khung M15 trên nến đã đóng: quá bán thì Mua, quá mua thì Bán."],
+    ["🛡️","Hedge hai chiều","Tài khoản Hedging cho phép giữ đồng thời lệnh Mua và Bán, giảm phụ thuộc vào việc đoán đúng một hướng."],
+    ["💰","Giữ lệnh lãi gồng tiếp","Tự giữ lại một số lệnh đang có lãi, mở lâu nhất, để tiếp tục hưởng xu hướng thay vì chốt vội."],
+    ["🔁","DCA chuỗi thông minh","Lệnh âm được DCA theo khoảng cách và hệ số lot cài sẵn, cả chuỗi đạt mục tiêu thì chốt một lần."],
+    ["🎯","Chốt lãi tổng","Khi tổng lãi toàn tài khoản đạt mục tiêu, bot đóng toàn bộ để khóa thành quả rồi mở chu kỳ mới."],
+    ["⚙️","Lọc mở lại","Chỉ mở lại lệnh khi giá tốt hơn các lệnh trước, tránh vào lại liên tục ở vùng giá xấu."]
+  ],
+  steps: [
+    ["RSI cho tín hiệu","Bot chờ RSI chạm vùng quá bán/quá mua rồi mở lệnh lot lớn đầu tiên."],
+    ["Giữ lãi, xử lý lệnh âm","Lệnh lãi được giữ lại, lệnh âm DCA theo từng chiều cho tới khi cả chuỗi đạt lãi mục tiêu."],
+    ["Chốt và làm mới","Chuỗi hoặc tổng tài khoản đạt mục tiêu thì chốt, sau đó bot mở chu kỳ mới."]
+  ],
+  about: [
+    ["Nền tảng","MetaTrader 5, tài khoản Hedging"],
+    ["Cặp giao dịch","XAUUSD (vàng) và các cặp tài khoản hỗ trợ"],
+    ["Khung tín hiệu","RSI(14) trên M15"],
+    ["Chiến lược","RSI + Hedge + DCA chuỗi + chốt lãi tổng"],
+    ["Hoạt động","Tự động 24/5, không cần can thiệp"],
+    ["Liên hệ","Telegram @trieutrieu79"]
+  ]
+};
+/* ======================== */
+
+const $=id=>document.getElementById(id);
+const TOPIC=new URLSearchParams(location.search).get('topic')||CONFIG.topic;
+const FEED=CONFIG.server.replace(/\/$/,'')+'/'+encodeURIComponent(TOPIC)+'/json?poll=1&since=latest';
+const CK='aurumHedgeCache', TG='https://t.me/'+CONFIG.telegram;
+const nf=(v,d=2)=>v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const sg=(v,d=2)=>(v>=0?'+':'−')+nf(Math.abs(v),d);
+const cls=v=>v>=0?'up':'dn';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const when=ts=>new Date(ts*1000).toLocaleString('vi-VN',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+
+document.title=CONFIG.name+' – Bot MT5 Hedge · DCA · RSI | Kết quả trực tiếp';
+$('botName').textContent=CONFIG.name; $('botSub').textContent=CONFIG.sub; $('botTag').textContent=CONFIG.tagline;
+$('aboutIntro').textContent='Chiến lược gồm ba lớp phối hợp với nhau, vận hành hoàn toàn tự động:';
+['tgTop','tgHero'].forEach(i=>$(i).href=TG); $('tgBot').href=TG; $('tgBot').textContent='Nhắn Telegram @'+CONFIG.telegram;
+$('feats').innerHTML=CONFIG.features.map(f=>`<div class="feat"><div class="ic">${f[0]}</div><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p></div>`).join('');
+$('steps').innerHTML=CONFIG.steps.map(s=>`<li><div><b>${esc(s[0])}</b><span>${esc(s[1])}</span></div></li>`).join('');
+$('about').innerHTML=CONFIG.about.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('');
+
+/* quy đổi % <-> USD */
+let SB=CONFIG.startBalance||0;
+function both(v,unit){ // trả về {pct,usd}
+  if(unit==='%') return {pct:v,usd:SB?v*SB/100:null};
+  return {pct:SB?v/SB*100:null,usd:v};
+}
+function dual(v,unit){
+  const b=both(v,unit), p=b.pct==null?'':sg(b.pct)+'%', u=b.usd==null?'':sg(b.usd)+' USD';
+  return {main:p||u, sub:p&&u?u:''};
+}
+
+/* biểu đồ */
+let curve=[];
+function draw(){
+  const svg=$('chart'),W=svg.clientWidth||800,H=svg.clientHeight||320,pl=46,pr=8,pt=10,pb=22;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  if(curve.length<2){svg.innerHTML=`<text x="${W/2}" y="${H/2}" text-anchor="middle" style="fill:var(--mu);font-size:14px">Chưa có lệnh đã đóng để vẽ biểu đồ</text>`;return;}
+  const mn=Math.min(0,...curve),mx=Math.max(0,...curve),rg=(mx-mn)||1;
+  const X=i=>pl+i/(curve.length-1)*(W-pl-pr),Y=v=>pt+(1-(v-mn)/rg)*(H-pt-pb);
+  const pts=curve.map((v,i)=>`${X(i).toFixed(1)},${Y(v).toFixed(1)}`);
+  const last=curve[curve.length-1],col=last>=0?'#2fd6a0':'#ff6b7a',y0=Y(0);
+  let grid='';
+  for(let k=0;k<=4;k++){const v=mn+rg*k/4,y=Y(v);
+    grid+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" style="stroke:var(--line)"/><text x="${pl-8}" y="${y+4}" text-anchor="end" style="fill:var(--mu);font-size:11px">${nf(v,rg<5?1:0)}%</text>`;}
+  svg.innerHTML=`${grid}
+  <line x1="${pl}" x2="${W-pr}" y1="${y0}" y2="${y0}" style="stroke:var(--mu)" stroke-dasharray="4 4"/>
+  <defs><linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".35"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>
+  <path d="M${pts[0]} L${pts.join(' L')} L${X(curve.length-1)},${y0} L${X(0)},${y0} Z" fill="url(#ar)"/>
+  <polyline points="${pts.join(' ')}" fill="none" stroke="${col}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="${X(curve.length-1)}" cy="${Y(last)}" r="5" fill="${col}"/>
+  <text x="${pl}" y="${H-5}" style="fill:var(--mu);font-size:11px">Lệnh đầu tiên</text>
+  <text x="${W-pr}" y="${H-5}" text-anchor="end" style="fill:var(--mu);font-size:11px">${curve.length-1} lệnh</text>
+  <line id="vline" y1="${pt}" y2="${H-pb}" style="stroke:#fff;opacity:0"/>`;
+  svg._m={X,Y,pl,pr,W};
+}
+(function(){
+  const svg=$('chart'),tip=$('tip');
+  svg.addEventListener('pointermove',e=>{
+    const m=svg._m;if(!m||curve.length<2)return;
+    const r=svg.getBoundingClientRect(),x=(e.clientX-r.left)*(m.W/r.width);
+    const i=Math.max(0,Math.min(curve.length-1,Math.round((x-m.pl)/(m.W-m.pl-m.pr)*(curve.length-1))));
+    const vl=$('vline');vl.setAttribute('x1',m.X(i));vl.setAttribute('x2',m.X(i));vl.style.opacity=.35;
+    tip.style.opacity=1;tip.style.left=(m.X(i)*r.width/m.W)+'px';tip.style.top=(m.Y(curve[i])*r.height/svg.clientHeight)+'px';
+    tip.textContent=(i===0?'Bắt đầu':'Sau lệnh #'+i)+': '+sg(curve[i])+'%'+(SB?'  ('+sg(curve[i]*SB/100)+' USD)':'');
+  });
+  svg.addEventListener('pointerleave',()=>{tip.style.opacity=0;const v=$('vline');if(v)v.style.opacity=0;});
+})();
+addEventListener('resize',draw);
+
+/* hiển thị */
+function render(d,live){
+  d.open=d.open||[];d.recent=d.recent||[];d.curve=d.curve||[];d.wins=d.wins||0;d.losses=d.losses||0;d.open_pl=d.open_pl||0;d.closed_pl=d.closed_pl||0;d.maxdd=d.maxdd||0;d.growth=d.growth||0;
+  const n=d.wins+d.losses,wr=n?d.wins/n*100:0; curve=d.curve||[];
+  SB=CONFIG.startBalance||d.start_balance||(d.balance&&d.growth>-100?d.balance/(1+d.growth/100):0)||0;
+  const pill=$('status');pill.className='pill '+(live?'live':'off');
+  $('statusTxt').textContent=live?'Đang chạy trực tiếp':'Bot offline, dữ liệu lúc '+new Date(d.updated*1000).toLocaleString('vi-VN');
+
+  const gp=d.growth, gu=d.growth_usd!=null?d.growth_usd:(d.unit!=='%'?d.closed_pl:(SB?gp*SB/100:null));
+  $('gPct').textContent=sg(gp)+'%'; $('gPct').className='num '+cls(gp);
+  $('gUsd').textContent=gu==null?'–':sg(gu)+' USD'; $('gUsd').className='num '+(gu==null?'':cls(gu));
+  const days=d.since?Math.max(1,Math.floor((Date.now()/1000-d.since)/86400)):0;
+  $('gDays').textContent=days?`Tăng trưởng sau ${days} ngày giao dịch`:'Tăng trưởng tài khoản';
+  $('gBal').textContent=d.balance?`Số dư hiện tại: ${nf(d.balance)} USD`:(SB?`Vốn ban đầu: ${nf(SB)} USD`:'');
+
+  const o=dual(d.open_pl,d.unit), c=dual(d.closed_pl,d.unit);
+  $('chips').innerHTML=`
+    <div class="chip">Đang mở (tạm tính)<b class="${cls(d.open_pl)}">${o.main}${o.sub?`<i>${o.sub}</i>`:''}</b></div>
+    <div class="chip">Đã chốt<b class="${cls(d.closed_pl)}">${c.main}${c.sub?`<i>${c.sub}</i>`:''}</b></div>`;
+
+  $('stats').innerHTML=`
+    <div class="stat"><b>${nf(wr,1)}%</b><span>Tỷ lệ thắng (${d.wins} thắng / ${d.losses} thua)</span></div>
+    <div class="stat"><b>${d.pf==null?'∞':nf(d.pf)}</b><span>Profit factor</span></div>
+    <div class="stat"><b>${nf(d.maxdd,1)}%</b><span>Sụt giảm tối đa</span></div>
+    <div class="stat"><b>${n}</b><span>Lệnh đã đóng</span></div>`;
+
+  const item=x=>{const v=dual(x.pl,d.unit);return `<div class="r num ${cls(x.pl)}">${v.main}${v.sub?`<small>${v.sub}</small>`:''}</div>`;};
+  $('openSub').innerHTML=d.open.length?`${d.open.length} lệnh, lãi/lỗ tạm tính`:'&nbsp;';
+  $('open').innerHTML=d.open.length?d.open.map(x=>`<div class="row"><div><span class="badge ${x.type}">${x.type==='buy'?'MUA':'BÁN'}</span>${esc(x.symbol)}<small>${nf(x.volume)} lot</small></div>${item(x)}</div>`).join(''):'<div class="empty">Bot đang chờ tín hiệu, hiện không có lệnh mở.</div>';
+  $('recent').innerHTML=d.recent.length?d.recent.slice(0,40).map(x=>`<div class="row"><div><span class="badge ${x.type}">${x.type==='buy'?'MUA':'BÁN'}</span>${esc(x.symbol)} <span class="mu">${nf(x.volume)} lot</span><small>${when(x.ts)}</small></div>${item(x)}</div>`).join(''):'<div class="empty">Chưa có lệnh nào đóng.</div>';
+  draw();
+}
+
+async function load(){
+  try{
+    const r=await fetch(FEED,{cache:'no-store'});
+    if(!r.ok)throw new Error(r.status);
+    const lines=(await r.text()).split('\n').filter(Boolean).map(l=>{try{return JSON.parse(l);}catch(_){return null;}}).filter(m=>m&&m.event==='message');
+    if(!lines.length)throw new Error('empty');
+    const d=JSON.parse(lines[lines.length-1].message);
+    try{localStorage.setItem(CK,JSON.stringify(d));}catch(e){}
+    render(d,(Date.now()/1000-d.updated)<CONFIG.staleSec);
+  }catch(e){
+    let c=null;try{c=JSON.parse(localStorage.getItem(CK));}catch(_){}
+    if(c)render(c,false);
+    else{$('status').className='pill off';$('statusTxt').textContent='Chưa kết nối được tới bot';draw();}
+  }
+}
+load();setInterval(load,CONFIG.refreshSec*1000);
+</script>
+</body>
+</html>
